@@ -32,7 +32,7 @@
         .price-card h3 { color: #d4a373; margin-bottom: 10px; }
         .price-card .cost { font-size: 1.5rem; font-weight: bold; margin-bottom: 10px; }
 
-        /* BRON QILISH FORMASI (AQLLI QISM) */
+        /* BRON QILISH FORMASI */
         .booking-section { background: #fff; padding: 50px 30px; border-radius: 12px; max-width: 600px; margin: 0 auto 80px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
         .form-group { margin-bottom: 18px; text-align: left; }
         label { display: block; margin-bottom: 7px; font-weight: 600; font-size: 0.9rem; }
@@ -129,7 +129,7 @@
     </footer>
 
     <script>
-        // ⚠️ GOOGLE SCRIPT URL'INGIZNI SHU YERGA QO'YING
+        // GOOGLE SCRIPT URL
         const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwYBS3vpL_d3kC3SM_vTncLnvRFnaZV-qHegcTiX0Ju2WE3tVrwwRicwCEeYsDqLU0SQg/exec";
 
         const sanaInput = document.getElementById('sana');
@@ -166,7 +166,9 @@
 
             let bookedSlots = [];
             try {
-                let response = await fetch(WEB_APP_URL, {
+                // Keshni chetlab o'tish uchun vaqt shtampi qo'shildi
+                let freshUrl = WEB_APP_URL + "?_=" + new Date().getTime();
+                let response = await fetch(freshUrl, {
                     method: "POST",
                     body: JSON.stringify({ action: "get_booked", date: this.value })
                 });
