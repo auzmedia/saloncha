@@ -3,198 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Glow & Style | Go'zallik Saloni</title>
+    <title>Glow & Style | Bron tizimi</title>
     <style>
-        /* UMUMIY DIZAYN */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
-        body { background-color: #faf6f6; color: #333; line-height: 1.6; }
-        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
-
-        /* HEADER */
-        header { background: #fff; padding: 20px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
-        header .container { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 24px; font-weight: bold; color: #d4a373; text-transform: uppercase; letter-spacing: 1px; }
-
-        /* HERO SECTION */
-        .hero { 
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1200&auto=format&fit=crop') no-repeat center center/cover;
-            height: 60vh; display: flex; align-items: center; text-align: center; color: #fff; 
-        }
-        .hero-content h1 { font-size: 3rem; margin-bottom: 20px; }
-        .hero-content p { font-size: 1.2rem; margin-bottom: 30px; }
-
-        /* NARXLAR */
-        .prices { padding: 60px 0; text-align: center; }
-        .section-title { font-size: 2.2rem; margin-bottom: 40px; color: #444; position: relative; }
-        .section-title::after { content: ''; display: block; width: 60px; height: 3px; background: #d4a373; margin: 10px auto 0; }
-        .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 50px; }
-        .price-card { background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .price-card h3 { color: #d4a373; margin-bottom: 10px; }
-        .price-card .cost { font-size: 1.5rem; font-weight: bold; margin-bottom: 10px; }
-
-        /* BRON QILISH FORMASI */
-        .booking-section { background: #fff; padding: 50px 30px; border-radius: 12px; max-width: 600px; margin: 0 auto 80px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-        .form-group { margin-bottom: 18px; text-align: left; }
-        label { display: block; margin-bottom: 7px; font-weight: 600; font-size: 0.9rem; }
-        input, select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 1rem; outline: none; }
-        input:focus, select:focus { border-color: #d4a373; }
-        .btn { display: inline-block; width: 100%; background: #d4a373; color: #fff; padding: 14px; text-decoration: none; border: none; border-radius: 6px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: 0.3s; }
-        .btn:hover { background: #b98453; }
-        .btn:disabled { background: #ccc; cursor: not-allowed; }
-        #loadingStatus { text-align: center; color: #d4a373; font-weight: bold; margin-bottom: 10px; display: none; }
-        .info-text { font-size: 0.85rem; color: #666; margin-top: 5px; text-align: left; }
-
-        /* FOOTER */
-        footer { background: #222; color: #fff; text-align: center; padding: 30px 0; margin-top: 50px; }
-
-        /* ADAPTIVE (MOBIL) */
-        @media (max-width: 768px) {
-            .hero-content h1 { font-size: 2rem; }
-            .hero { height: 50vh; }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #faf6f6; color: #333; padding: 20px; }
+        .booking-section { background: #fff; padding: 30px; border-radius: 12px; max-width: 500px; margin: 0 auto; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: 600; }
+        input, select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 1rem; }
+        .btn { width: 100%; background: #d4a373; color: #fff; padding: 14px; border: none; border-radius: 6px; font-size: 1.1rem; font-weight: bold; cursor: pointer; }
+        .btn:disabled { background: #ccc; }
+        #loadingStatus { text-align: center; color: #d4a373; display: none; margin-bottom: 10px; font-weight: bold; }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="container">
-            <div class="logo">Glow & Style</div>
-            <p>+996 (999) 888-777</p>
-        </div>
-    </header>
-
-    <section class="hero">
-        <div class="container hero-content">
-            <h1>Go'zalligingizni Bizga Ishoning</h1>
-            <p>Professional xizmatlar va individual yondashuv.</p>
-            <a href="#booking" class="btn" style="max-width: 250px;">Hoziroq yozilish</a>
-        </div>
-    </section>
-
-    <section class="prices container">
-        <h2 class="section-title">Xizmatlar va Narxlar</h2>
-        <div class="price-grid">
-            <div class="price-card">
-                <h3>Soch Turmaklash</h3>
-                <p class="cost">150 000 so'm</p>
-                <p>Kechki va kundalik turmaklar.</p>
+    <div class="booking-section">
+        <h2 style="text-align:center; margin-bottom:20px;">Vaqtni Band Qilish</h2>
+        <div id="loadingStatus">Tekshirilmoqda...</div>
+        <form id="bookingForm">
+            <div class="form-group"><label>Ism</label><input type="text" id="ism" required></div>
+            <div class="form-group"><label>Familiya</label><input type="text" id="familiya" required></div>
+            <div class="form-group"><label>Telefon</label><input type="tel" id="tel" required></div>
+            <div class="form-group"><label>Sana</label><input type="date" id="sana" required></div>
+            <div class="form-group">
+                <label>Vaqt (GMT+6)</label>
+                <select id="vaqt" required disabled><option value="">Sana tanlang...</option></select>
             </div>
-            <div class="price-card">
-                <h3>Professional Makiyaj</h3>
-                <p class="cost">250 000 so'm</p>
-                <p>To'y va bayramlar uchun.</p>
-            </div>
-            <div class="price-card">
-                <h3>Manikyur</h3>
-                <p class="cost">120 000 so'm</p>
-                <p>Zamonaviy dizaynlar.</p>
-            </div>
-        </div>
-
-        <div id="booking" class="booking-section">
-            <h2 style="margin-bottom: 20px;">Vaqtni Band Qilish</h2>
-            <div id="loadingStatus">Tekshirilmoqda...</div>
-            
-            <form id="bookingForm">
-                <div class="form-group">
-                    <label>Ismingiz</label>
-                    <input type="text" id="ism" required placeholder="Ali">
-                </div>
-                <div class="form-group">
-                    <label>Familiyangiz</label>
-                    <input type="text" id="familiya" required placeholder="Valiyev">
-                </div>
-                <div class="form-group">
-                    <label>Telefon raqamingiz</label>
-                    <input type="tel" id="tel" required placeholder="+998901234567">
-                </div>
-                <div class="form-group">
-                    <label>Sanani tanlang</label>
-                    <input type="date" id="sana" required>
-                    <p class="info-text">Juma — dam olish kuni</p>
-                </div>
-                <div class="form-group">
-                    <label>Bo'sh vaqtni tanlang</label>
-                    <select id="vaqt" required disabled>
-                        <option value="">Oldin sanani tanlang...</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn" id="submitBtn" disabled>Band qilish uchun yuborish</button>
-            </form>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 Glow & Style. Barcha huquqlar himoyalangan.</p>
-    </footer>
+            <button type="submit" class="btn" id="submitBtn" disabled>Yuborish</button>
+        </form>
+    </div>
 
     <script>
-        // GOOGLE SCRIPT URL
         const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwYBS3vpL_d3kC3SM_vTncLnvRFnaZV-qHegcTiX0Ju2WE3tVrwwRicwCEeYsDqLU0SQg/exec";
-
+        
         const sanaInput = document.getElementById('sana');
         const vaqtSelect = document.getElementById('vaqt');
         const submitBtn = document.getElementById('submitBtn');
-        const loadingStatus = document.getElementById('loadingStatus');
 
-        const today = new Date().toISOString().split('T')[0];
-        sanaInput.setAttribute('min', today);
+        // GMT+6 vaqtini aniqlash
+        function getGMT6Date() {
+            const now = new Date();
+            const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+            return new Date(utc + (3600000 * 6));
+        }
+
+        const now6 = getGMT6Date();
+        const todayStr = now6.toISOString().split('T')[0];
+        sanaInput.setAttribute('min', todayStr);
 
         const grafik = {
-            1: { start: 8, end: 20 },  2: { start: 9, end: 21 }, 
+            1: { start: 8, end: 20 }, 2: { start: 9, end: 21 }, 
             3: { start: 10, end: 22 }, 4: { start: 11, end: 23 }, 
-            5: null, 6: { start: 8, end: 16 }, 7: { start: 7, end: 19 }
+            5: null, 6: { start: 8, end: 16 }, 0: { start: 7, end: 19 } 
         };
 
         sanaInput.addEventListener('change', async function() {
-            const selectedDate = new Date(this.value);
-            let dayOfWeek = selectedDate.getDay(); 
-            if(dayOfWeek === 0) dayOfWeek = 7;
+            const selectedDate = this.value;
+            const dateObj = new Date(selectedDate);
+            const day = dateObj.getDay();
+
+            if (grafik[day] === null) {
+                alert("Juma - dam olish kuni!");
+                this.value = ''; return;
+            }
 
             vaqtSelect.innerHTML = '<option value="">Yuklanmoqda...</option>';
             vaqtSelect.disabled = true;
-            submitBtn.disabled = true;
+            document.getElementById('loadingStatus').style.display = 'block';
 
-            if (grafik[dayOfWeek] === null) {
-                alert("Juma kuni dam olish kuni!");
-                vaqtSelect.innerHTML = '<option value="">Juma - Dam kuni</option>';
-                this.value = '';
-                return;
-            }
-
-            loadingStatus.style.display = "block";
-
-            let bookedSlots = [];
+            let booked = [];
             try {
-                // Keshni chetlab o'tish uchun vaqt shtampi qo'shildi
-                let freshUrl = WEB_APP_URL + "?_=" + new Date().getTime();
-                let response = await fetch(freshUrl, {
-                    method: "POST",
-                    body: JSON.stringify({ action: "get_booked", date: this.value })
-                });
-                let data = await response.json();
-                bookedSlots = data.booked || [];
-            } catch (error) { console.error("Xatolik:", error); }
+                const res = await fetch(WEB_APP_URL, { method: "POST", body: JSON.stringify({ action: "get_booked", date: selectedDate }) });
+                const data = await res.json();
+                booked = data.booked || [];
+            } catch (e) { console.error(e); }
 
-            loadingStatus.style.display = "none";
+            document.getElementById('loadingStatus').style.display = 'none';
+            vaqtSelect.innerHTML = '<option value="">Tanlang...</option>';
 
-            const kunlikGrafik = grafik[dayOfWeek];
-            vaqtSelect.innerHTML = '<option value="">Vaqtni tanlang...</option>';
-            
-            for (let hour = kunlikGrafik.start; hour < kunlikGrafik.end; hour++) {
-                let slotTime = (hour < 10 ? '0' + hour : hour) + ':00';
-                let option = document.createElement('option');
-                option.value = slotTime;
-                
-                if (bookedSlots.includes(slotTime)) {
-                    option.textContent = slotTime + " - [BAND ❌]";
-                    option.disabled = true;
+            const currentHour = getGMT6Date().getHours();
+            const isToday = selectedDate === todayStr;
+            const g = grafik[day];
+
+            for (let h = g.start; h < g.end; h++) {
+                let time = (h < 10 ? '0'+h : h) + ':00';
+                let opt = document.createElement('option');
+                opt.value = time;
+
+                if (booked.includes(time)) {
+                    opt.textContent = time + " - [BAND ❌]";
+                    opt.disabled = true;
+                } else if (isToday && h <= currentHour) {
+                    opt.textContent = time + " - [O'TIB KETDI ⏳]";
+                    opt.disabled = true;
                 } else {
-                    option.textContent = slotTime + " - Bo'sh ✅";
+                    opt.textContent = time + " - Bo'sh ✅";
                 }
-                vaqtSelect.appendChild(option);
+                vaqtSelect.appendChild(opt);
             }
-            
             vaqtSelect.disabled = false;
             submitBtn.disabled = false;
         });
@@ -203,8 +110,8 @@
             e.preventDefault();
             submitBtn.disabled = true;
             submitBtn.textContent = "Yuborilmoqda...";
-
-            const formData = {
+            
+            const payload = {
                 action: "book",
                 ism: document.getElementById('ism').value,
                 familiya: document.getElementById('familiya').value,
@@ -214,13 +121,13 @@
             };
 
             try {
-                await fetch(WEB_APP_URL, { method: "POST", body: JSON.stringify(formData) });
-                alert("Arizangiz yuborildi! Admin tasdiqlagach, ushbu vaqt band qilinadi.");
-                document.getElementById('bookingForm').reset();
+                await fetch(WEB_APP_URL, { method: "POST", mode: "no-cors", body: JSON.stringify(payload) });
+                alert("Muvaffaqiyatli yuborildi!");
+                this.reset();
                 vaqtSelect.disabled = true;
-            } catch (error) { alert("Xatolik yuz berdi."); }
-
-            submitBtn.textContent = "Band qilish uchun yuborish";
+            } catch (e) { alert("Xato yuz berdi!"); }
+            
+            submitBtn.textContent = "Yuborish";
             submitBtn.disabled = false;
         });
     </script>
