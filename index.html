@@ -1,148 +1,603 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Glow & Style | Bron Tizimi</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
-        body { background-color: #faf6f6; color: #333; line-height: 1.6; padding: 20px; }
-        .booking-section { background: #fff; padding: 30px; border-radius: 12px; max-width: 500px; margin: 0 auto; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-        .form-group { margin-bottom: 15px; }
-        label { display: block; margin-bottom: 5px; font-weight: 600; }
-        input, select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 1rem; outline: none; }
-        input:focus { border-color: #d4a373; }
-        .btn { width: 100%; background: #d4a373; color: #fff; padding: 14px; border: none; border-radius: 6px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: 0.3s; }
-        .btn:disabled { background: #ccc; cursor: not-allowed; }
-        #loadingStatus { text-align: center; color: #d4a373; display: none; margin-bottom: 10px; font-weight: bold; }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Glow & Style Salon</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Montserrat',sans-serif;
+    background:#f8f5f2;
+    color:#222;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    background:
+    linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+    url('https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?q=80&w=1974&auto=format&fit=crop');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:40px 20px;
+}
+
+.container{
+    width:100%;
+    max-width:1200px;
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1fr 480px;
+    gap:50px;
+    align-items:center;
+}
+
+.hero-text h1{
+    font-size:64px;
+    color:#fff;
+    font-weight:800;
+    line-height:1.1;
+    margin-bottom:20px;
+}
+
+.hero-text p{
+    color:#eee;
+    font-size:18px;
+    line-height:1.8;
+    max-width:600px;
+}
+
+.badges{
+    display:flex;
+    gap:15px;
+    margin-top:30px;
+    flex-wrap:wrap;
+}
+
+.badge{
+    background:rgba(255,255,255,.15);
+    border:1px solid rgba(255,255,255,.2);
+    padding:12px 18px;
+    border-radius:50px;
+    color:#fff;
+    backdrop-filter:blur(10px);
+    font-size:14px;
+}
+
+/* BOOKING CARD */
+
+.booking-card{
+    background:#fff;
+    border-radius:28px;
+    padding:35px;
+    box-shadow:0 20px 50px rgba(0,0,0,.15);
+}
+
+.booking-card h2{
+    font-size:32px;
+    margin-bottom:10px;
+}
+
+.booking-card p{
+    color:#666;
+    margin-bottom:25px;
+}
+
+.form-group{
+    margin-bottom:18px;
+}
+
+label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:600;
+    font-size:14px;
+}
+
+input,
+select{
+    width:100%;
+    padding:16px;
+    border-radius:14px;
+    border:1px solid #ddd;
+    font-size:15px;
+    transition:.3s;
+    background:#fff;
+}
+
+input:focus,
+select:focus{
+    outline:none;
+    border-color:#d4a373;
+    box-shadow:0 0 0 4px rgba(212,163,115,.15);
+}
+
+.btn{
+    width:100%;
+    border:none;
+    background:#d4a373;
+    color:#fff;
+    padding:18px;
+    border-radius:16px;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+    background:#be8a57;
+}
+
+.btn:disabled{
+    background:#ccc;
+    cursor:not-allowed;
+    transform:none;
+}
+
+#loadingStatus{
+    display:none;
+    text-align:center;
+    margin-bottom:15px;
+    color:#d4a373;
+    font-weight:700;
+}
+
+/* SERVICES */
+
+.services{
+    padding:100px 20px;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.section-title h2{
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+.section-title p{
+    color:#777;
+}
+
+.services-grid{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.service-card{
+    background:#fff;
+    border-radius:24px;
+    padding:35px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.06);
+    transition:.3s;
+}
+
+.service-card:hover{
+    transform:translateY(-5px);
+}
+
+.service-card h3{
+    margin:20px 0 10px;
+}
+
+/* FOOTER */
+
+footer{
+    background:#111;
+    color:#fff;
+    text-align:center;
+    padding:35px 20px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:980px){
+
+.hero-grid{
+    grid-template-columns:1fr;
+}
+
+.hero-text{
+    text-align:center;
+}
+
+.hero-text h1{
+    font-size:48px;
+}
+
+.badges{
+    justify-content:center;
+}
+
+}
+
+@media(max-width:600px){
+
+.hero{
+    padding:30px 15px;
+}
+
+.hero-text h1{
+    font-size:38px;
+}
+
+.booking-card{
+    padding:25px;
+}
+
+.section-title h2{
+    font-size:32px;
+}
+
+}
+
+</style>
 </head>
 <body>
 
-    <div class="booking-section">
-        <h2 style="text-align: center; margin-bottom: 20px;">Vaqtni Band Qilish</h2>
-        <div id="loadingStatus">Vaqtlar tekshirilmoqda...</div>
-        
-        <form id="bookingForm">
-            <div class="form-group"><label>Ismingiz</label><input type="text" id="ism" required placeholder="Ali"></div>
-            <div class="form-group"><label>Familiyangiz</label><input type="text" id="familiya" required placeholder="Valiyev"></div>
-            <div class="form-group"><label>Telefon raqamingiz</label><input type="tel" id="tel" required placeholder="+996..."></div>
-            <div class="form-group"><label>Sanani tanlang</label><input type="date" id="sana" required></div>
-            <div class="form-group">
-                <label>Bo'sh vaqtni tanlang</label>
-                <select id="vaqt" required disabled><option value="">Oldin sanani tanlang...</option></select>
-            </div>
-            <button type="submit" class="btn" id="submitBtn" disabled>Band qilish uchun yuborish</button>
-        </form>
-    </div>
+<section class="hero">
 
-    <script>
-        const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwYBS3vpL_d3kC3SM_vTncLnvRFnaZV-qHegcTiX0Ju2WE3tVrwwRicwCEeYsDqLU0SQg/exec";
-        
-        const sanaInput = document.getElementById('sana');
-        const vaqtSelect = document.getElementById('vaqt');
-        const submitBtn = document.getElementById('submitBtn');
-        const loadingStatus = document.getElementById('loadingStatus');
+<div class="container">
 
-        // GMT+6 vaqtini aniq olish funksiyasi
-        function getGMT6() {
-            const now = new Date();
-            const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
-            const gmt6 = new Date(utc + (3600000 * 6));
-            return {
-                hour: gmt6.getHours(),
-                dateStr: gmt6.toISOString().split('T')[0]
-            };
+<div class="hero-grid">
+
+<div class="hero-text">
+
+<h1>Glow & Style Salon</h1>
+
+<p>
+Professional salon xizmatlari.
+Online bron qiling va vaqtingizni oldindan band qiling.
+Tasdiqlangan vaqt avtomatik band bo‘ladi.
+</p>
+
+<div class="badges">
+<div class="badge">✅ Online Bron</div>
+<div class="badge">⚡ Tez Tasdiqlash</div>
+<div class="badge">📱 Telegram Integratsiya</div>
+</div>
+
+</div>
+
+<div class="booking-card">
+
+<h2>Bron Qilish</h2>
+<p>Quyidagi formani to‘ldiring</p>
+
+<div id="loadingStatus">
+Vaqtlar tekshirilmoqda...
+</div>
+
+<form id="bookingForm">
+
+<div class="form-group">
+<label>Ismingiz</label>
+<input type="text" id="ism" required placeholder="Ali">
+</div>
+
+<div class="form-group">
+<label>Familiyangiz</label>
+<input type="text" id="familiya" required placeholder="Valiyev">
+</div>
+
+<div class="form-group">
+<label>Telefon raqam</label>
+<input type="tel" id="tel" required placeholder="+996...">
+</div>
+
+<div class="form-group">
+<label>Sana</label>
+<input type="date" id="sana" required>
+</div>
+
+<div class="form-group">
+<label>Bo‘sh vaqt</label>
+
+<select id="vaqt" required disabled>
+<option value="">
+Oldin sanani tanlang
+</option>
+</select>
+
+</div>
+
+<button type="submit" class="btn" id="submitBtn" disabled>
+Band qilish
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="services">
+
+<div class="section-title">
+<h2>Xizmatlarimiz</h2>
+<p>Professional xizmat va yuqori sifat</p>
+</div>
+
+<div class="services-grid">
+
+<div class="service-card">
+<h3>Soch Turmaklash</h3>
+<p>Zamonaviy professional hairstyle</p>
+</div>
+
+<div class="service-card">
+<h3>Makeup</h3>
+<p>Premium makeup xizmatlari</p>
+</div>
+
+<div class="service-card">
+<h3>SPA & Relax</h3>
+<p>Dam olish va beauty xizmatlari</p>
+</div>
+
+<div class="service-card">
+<h3>Manikyur</h3>
+<p>Professional nail service</p>
+</div>
+
+</div>
+
+</section>
+
+<footer>
+© 2026 Glow & Style Salon
+</footer>
+
+<script>
+
+const WEB_APP_URL =
+"https://script.google.com/macros/s/AKfycbwYBS3vpL_d3kC3SM_vTncLnvRFnaZV-qHegcTiX0Ju2WE3tVrwwRicwCEeYsDqLU0SQg/exec";
+
+const sanaInput = document.getElementById('sana');
+const vaqtSelect = document.getElementById('vaqt');
+const submitBtn = document.getElementById('submitBtn');
+const loadingStatus = document.getElementById('loadingStatus');
+
+function getGMT6(){
+
+    const now = new Date();
+
+    const utc =
+    now.getTime() +
+    (now.getTimezoneOffset() * 60000);
+
+    const gmt6 =
+    new Date(utc + (3600000 * 6));
+
+    return {
+        hour:gmt6.getHours(),
+        dateStr:gmt6.toISOString().split('T')[0]
+    };
+
+}
+
+const currentNow = getGMT6();
+
+sanaInput.setAttribute('min', currentNow.dateStr);
+
+const grafik = {
+
+    1:{ start:8, end:20 },
+    2:{ start:9, end:21 },
+    3:{ start:10, end:22 },
+    4:{ start:11, end:23 },
+    5:null,
+    6:{ start:8, end:16 },
+    0:{ start:7, end:19 }
+
+};
+
+sanaInput.addEventListener('change', async function(){
+
+    const selectedDate = this.value;
+
+    const dayOfWeek =
+    new Date(selectedDate).getDay();
+
+    if(grafik[dayOfWeek] === null){
+
+        alert("Juma kuni dam olish");
+
+        this.value = '';
+
+        return;
+
+    }
+
+    loadingStatus.style.display = "block";
+
+    vaqtSelect.innerHTML =
+    '<option>Yuklanmoqda...</option>';
+
+    vaqtSelect.disabled = true;
+
+    let bookedSlots = [];
+
+    try{
+
+        const response = await fetch(
+            WEB_APP_URL,
+            {
+                method:"POST",
+                body:JSON.stringify({
+                    action:"get_booked",
+                    date:selectedDate
+                })
+            }
+        );
+
+        const data = await response.json();
+
+        bookedSlots = data.booked || [];
+
+    }catch(error){
+
+        console.log(error);
+
+    }
+
+    loadingStatus.style.display = "none";
+
+    vaqtSelect.innerHTML =
+    '<option value="">Vaqtni tanlang</option>';
+
+    const liveNow = getGMT6();
+
+    const isToday =
+    selectedDate === liveNow.dateStr;
+
+    const kunlikGrafik =
+    grafik[dayOfWeek];
+
+    for(
+        let h = kunlikGrafik.start;
+        h < kunlikGrafik.end;
+        h++
+    ){
+
+        let slotTime =
+        (h < 10 ? '0'+h : h) + ':00';
+
+        let option =
+        document.createElement('option');
+
+        option.value = slotTime;
+
+        let isBooked =
+        bookedSlots.includes(slotTime);
+
+        let isPast =
+        isToday && (h <= liveNow.hour);
+
+        if(isBooked){
+
+            option.textContent =
+            slotTime + ' - BAND ❌';
+
+            option.disabled = true;
+
+        }
+        else if(isPast){
+
+            option.textContent =
+            slotTime + ' - O‘TIB KETGAN ⏳';
+
+            option.disabled = true;
+
+        }
+        else{
+
+            option.textContent =
+            slotTime + ' - Bo‘sh ✅';
+
         }
 
-        // Bugungi sanani cheklash (min)
-        const currentNow = getGMT6();
-        sanaInput.setAttribute('min', currentNow.dateStr);
+        vaqtSelect.appendChild(option);
 
-        const grafik = {
-            1: { start: 8, end: 20 }, 2: { start: 9, end: 21 }, 
-            3: { start: 10, end: 22 }, 4: { start: 11, end: 23 }, 
-            5: null, 6: { start: 8, end: 16 }, 0: { start: 7, end: 19 } 
-        };
+    }
 
-        sanaInput.addEventListener('change', async function() {
-            const selectedDate = this.value;
-            const dayOfWeek = new Date(selectedDate).getDay();
+    vaqtSelect.disabled = false;
 
-            if (grafik[dayOfWeek] === null) {
-                alert("Juma kuni dam olish kuni!");
-                this.value = ''; return;
+    submitBtn.disabled = false;
+
+});
+
+document
+.getElementById('bookingForm')
+.addEventListener('submit', async function(e){
+
+    e.preventDefault();
+
+    submitBtn.disabled = true;
+
+    submitBtn.innerText = "Yuborilmoqda...";
+
+    const formData = {
+
+        action:"book",
+
+        ism:
+        document.getElementById('ism').value,
+
+        familiya:
+        document.getElementById('familiya').value,
+
+        tel:
+        document.getElementById('tel').value,
+
+        sana:sanaInput.value,
+
+        vaqt:vaqtSelect.value
+
+    };
+
+    try{
+
+        await fetch(
+            WEB_APP_URL,
+            {
+                method:"POST",
+                mode:"no-cors",
+                body:JSON.stringify(formData)
             }
+        );
 
-            loadingStatus.style.display = "block";
-            vaqtSelect.innerHTML = '<option value="">Yuklanmoqda...</option>';
-            vaqtSelect.disabled = true;
+        alert(
+            "So‘rov yuborildi. Admin tasdiqlashi kutilmoqda."
+        );
 
-            let bookedSlots = [];
-            try {
-                const response = await fetch(WEB_APP_URL, {
-                    method: "POST",
-                    body: JSON.stringify({ action: "get_booked", date: selectedDate })
-                });
-                const data = await response.json();
-                bookedSlots = data.booked || [];
-            } catch (error) { console.error("Xato:", error); }
+        this.reset();
 
-            loadingStatus.style.display = "none";
-            vaqtSelect.innerHTML = '<option value="">Vaqtni tanlang...</option>';
+        vaqtSelect.disabled = true;
 
-            const liveNow = getGMT6();
-            const isToday = (selectedDate === liveNow.dateStr);
-            const kunlikGrafik = grafik[dayOfWeek];
+    }catch(error){
 
-            for (let h = kunlikGrafik.start; h < kunlikGrafik.end; h++) {
-                let slotTime = (h < 10 ? '0' + h : h) + ':00';
-                let option = document.createElement('option');
-                option.value = slotTime;
+        alert("Xatolik yuz berdi");
 
-                let isBooked = bookedSlots.includes(slotTime);
-                let isPast = isToday && (h <= liveNow.hour); // Agar hozir 16:20 bo'lsa, 16:00 ham yopiladi
+    }
 
-                if (isBooked) {
-                    option.textContent = slotTime + " - [BAND ❌]";
-                    option.disabled = true;
-                } else if (isPast) {
-                    option.textContent = slotTime + " - [O'TIB KETDI ⏳]";
-                    option.disabled = true;
-                } else {
-                    option.textContent = slotTime + " - Bo'sh ✅";
-                }
-                vaqtSelect.appendChild(option);
-            }
-            
-            vaqtSelect.disabled = false;
-            submitBtn.disabled = false;
-        });
+    submitBtn.disabled = false;
 
-        document.getElementById('bookingForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            submitBtn.disabled = true;
-            submitBtn.textContent = "Yuborilmoqda...";
+    submitBtn.innerText = "Band qilish";
 
-            const formData = {
-                action: "book",
-                ism: document.getElementById('ism').value,
-                familiya: document.getElementById('familiya').value,
-                tel: document.getElementById('tel').value,
-                sana: sanaInput.value,
-                vaqt: vaqtSelect.value
-            };
+});
 
-            try {
-                await fetch(WEB_APP_URL, { method: "POST", mode: "no-cors", body: JSON.stringify(formData) });
-                alert("Arizangiz yuborildi! Admin tasdiqlagach, ushbu vaqt band qilinadi.");
-                this.reset();
-                vaqtSelect.disabled = true;
-            } catch (error) { alert("Xatolik yuz berdi!"); }
+</script>
 
-            submitBtn.textContent = "Band qilish uchun yuborish";
-            submitBtn.disabled = false;
-        });
-    </script>
 </body>
 </html>
